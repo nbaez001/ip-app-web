@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Call Backend Service</title>
+    <script>
+        async function callBackend() {
+            const responseTextArea = document.getElementById('responseText');
+
+            try {
+                // Call the PHP script that interacts with the container
+                const response = await fetch('call-backend.php');
+
+                // Check if the response is successful
+                if (response.ok) {
+                    const data = await response.text();
+                    responseTextArea.value = data;
+                } else {
+                    responseTextArea.value = `Error: Backend returned status ${response.status}`;
+                }
+            } catch (error) {
+                // Handle any errors during the fetch
+                responseTextArea.value = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Call Backend Service</h1>
+    <button onclick="callBackend()">Call</button>
+    <h2>Response:</h2>
+    <textarea id="responseText" rows="10" cols="50" readonly>
+Click the button to fetch data from the backend.
+    </textarea>
+</body>
+</html>
