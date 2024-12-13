@@ -2,7 +2,7 @@
 header('Content-Type: text/plain');
 
 // Define the container's address and port
-$containerHost = 'ip-app';
+$containerHost = 'localhost';
 $containerPort = 8080;
 $endpoint = "http://$containerHost:$containerPort";
 
